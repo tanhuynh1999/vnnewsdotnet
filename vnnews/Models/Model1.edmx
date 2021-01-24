@@ -1,0 +1,1427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="vnnewsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ads">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_img" Type="nvarchar(max)" />
+          <Property Name="ad_datecreate" Type="datetime" />
+          <Property Name="ad_dateupdate" Type="datetime" />
+          <Property Name="ad_note" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="ad_active" Type="bit" />
+          <Property Name="ad_bin" Type="bit" />
+        </EntityType>
+        <EntityType Name="Categorys">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_name" Type="nvarchar" MaxLength="300" />
+          <Property Name="category_img" Type="nvarchar(max)" />
+          <Property Name="category_datecreate" Type="datetime" />
+          <Property Name="category_view" Type="int" />
+          <Property Name="category_active" Type="bit" />
+          <Property Name="category_bin" Type="bit" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="comment_id" />
+          </Key>
+          <Property Name="comment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comment_content" Type="nvarchar(max)" />
+          <Property Name="comment_datecreate" Type="datetime" />
+          <Property Name="comment_dateupdate" Type="datetime" />
+          <Property Name="comment_active" Type="bit" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Contactads">
+          <Key>
+            <PropertyRef Name="contactads_id" />
+          </Key>
+          <Property Name="contactads_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contactads_phone" Type="varchar" MaxLength="15" />
+          <Property Name="contactads_zalo" Type="varchar" MaxLength="15" />
+          <Property Name="contactads_fb" Type="nvarchar(max)" />
+          <Property Name="contactads_email" Type="varchar" MaxLength="300" />
+          <Property Name="contactads_content" Type="nvarchar(max)" />
+          <Property Name="contactads_datecreate" Type="datetime" />
+          <Property Name="contactads_dateend" Type="datetime" />
+          <Property Name="contactads_name" Type="nvarchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="contactads_browser" Type="bit" />
+        </EntityType>
+        <EntityType Name="Dow_id">
+          <Key>
+            <PropertyRef Name="dow_id" />
+          </Key>
+          <Property Name="dow_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dow_name" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Editors">
+          <Key>
+            <PropertyRef Name="editor_id" />
+          </Key>
+          <Property Name="editor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="editor_fullname" Type="nvarchar" MaxLength="300" />
+          <Property Name="sex_id" Type="int" />
+          <Property Name="editor_fb" Type="nvarchar(max)" />
+          <Property Name="editor_phone" Type="varchar" MaxLength="15" />
+          <Property Name="editor_time" Type="nvarchar(max)" />
+          <Property Name="editor_introduce" Type="nvarchar(max)" />
+          <Property Name="editor_interests" Type="nvarchar(max)" />
+          <Property Name="editor_enthusiasm" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="editor_datecreate" Type="datetime" />
+          <Property Name="editor_dateupdate" Type="datetime" />
+          <Property Name="editor_browser" Type="bit" />
+        </EntityType>
+        <EntityType Name="Favourites">
+          <Key>
+            <PropertyRef Name="favourite_id" />
+          </Key>
+          <Property Name="favourite_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="favourite_datecreate" Type="datetime" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="news_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Likes">
+          <Key>
+            <PropertyRef Name="like_id" />
+          </Key>
+          <Property Name="like_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="like_datecreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="news_name" Type="nvarchar" MaxLength="300" />
+          <Property Name="news_content" Type="nvarchar(max)" />
+          <Property Name="news_datecreate" Type="datetime" />
+          <Property Name="news_view" Type="int" />
+          <Property Name="news_like" Type="int" />
+          <Property Name="news_img" Type="nvarchar(max)" />
+          <Property Name="news_video" Type="nvarchar(max)" />
+          <Property Name="news_active" Type="bit" />
+          <Property Name="news_bin" Type="bit" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="News_Category">
+          <Key>
+            <PropertyRef Name="nc_id" />
+          </Key>
+          <Property Name="nc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="cn_datecreate" Type="datetime" />
+          <Property Name="category_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Replys">
+          <Key>
+            <PropertyRef Name="reply_id" />
+          </Key>
+          <Property Name="reply_id" Type="int" Nullable="false" />
+          <Property Name="comment_id" Type="int" />
+          <Property Name="reply_datecreate" Type="datetime" />
+          <Property Name="reply_dateupdate" Type="datetime" />
+          <Property Name="reply_content" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="report_id" />
+          </Key>
+          <Property Name="report_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="report_content" Type="nvarchar(max)" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="report_datecreate" Type="datetime" />
+          <Property Name="dow_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="role_active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sexs">
+          <Key>
+            <PropertyRef Name="sex_id" />
+          </Key>
+          <Property Name="sex_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sex_name" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User_Category">
+          <Key>
+            <PropertyRef Name="uc_id" />
+          </Key>
+          <Property Name="uc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="uc_datecreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_email" Type="varchar" MaxLength="300" />
+          <Property Name="user_pass" Type="nvarchar(max)" />
+          <Property Name="user_datecreate" Type="datetime" />
+          <Property Name="user_datelogin" Type="datetime" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_img" Type="nvarchar(max)" />
+          <Property Name="sex_id" Type="int" />
+          <Property Name="user_phone" Type="varchar" MaxLength="15" />
+          <Property Name="user_active" Type="bit" />
+          <Property Name="user_bin" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Ads_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Ads" Type="Self.Ads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Ads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactads_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Contactads" Type="Self.Contactads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Contactads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Editors_Sexs">
+          <End Role="Sexs" Type="Self.Sexs" Multiplicity="0..1" />
+          <End Role="Editors" Type="Self.Editors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexs">
+              <PropertyRef Name="sex_id" />
+            </Principal>
+            <Dependent Role="Editors">
+              <PropertyRef Name="sex_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Editors_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Editors" Type="Self.Editors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Editors">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Likes_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Likes" Type="Self.Likes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Likes">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Likes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Likes" Type="Self.Likes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Likes">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Category_Categorys">
+          <End Role="Categorys" Type="Self.Categorys" Multiplicity="0..1" />
+          <End Role="News_Category" Type="Self.News_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="News_Category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Category_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="News_Category" Type="Self.News_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="News_Category">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Replys_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="Replys" Type="Self.Replys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="comment_id" />
+            </Principal>
+            <Dependent Role="Replys">
+              <PropertyRef Name="comment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Replys_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Replys" Type="Self.Replys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Replys">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Dow_id">
+          <End Role="Dow_id" Type="Self.Dow_id" Multiplicity="0..1" />
+          <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dow_id">
+              <PropertyRef Name="dow_id" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="dow_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Category_Categorys">
+          <End Role="Categorys" Type="Self.Categorys" Multiplicity="0..1" />
+          <End Role="User_Category" Type="Self.User_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="User_Category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Category_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="User_Category" Type="Self.User_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="User_Category">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Sexs">
+          <End Role="Sexs" Type="Self.Sexs" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexs">
+              <PropertyRef Name="sex_id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="sex_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vnnewsModelStoreContainer">
+          <EntitySet Name="Ads" EntityType="Self.Ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorys" EntityType="Self.Categorys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactads" EntityType="Self.Contactads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dow_id" EntityType="Self.Dow_id" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Editors" EntityType="Self.Editors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Likes" EntityType="Self.Likes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News_Category" EntityType="Self.News_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Replys" EntityType="Self.Replys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexs" EntityType="Self.Sexs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Category" EntityType="Self.User_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ads_Users" Association="Self.FK_Ads_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Ads" EntitySet="Ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_News" Association="Self.FK_Comment_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Users" Association="Self.FK_Comment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactads_Users" Association="Self.FK_Contactads_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contactads" EntitySet="Contactads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Editors_Sexs" Association="Self.FK_Editors_Sexs">
+            <End Role="Sexs" EntitySet="Sexs" />
+            <End Role="Editors" EntitySet="Editors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Editors_Users" Association="Self.FK_Editors_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Editors" EntitySet="Editors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_News" Association="Self.FK_Favourites_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_Users" Association="Self.FK_Favourites_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Likes_News" Association="Self.FK_Likes_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Likes" EntitySet="Likes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Likes_Users" Association="Self.FK_Likes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Likes" EntitySet="Likes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Category_Categorys" Association="Self.FK_News_Category_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="News_Category" EntitySet="News_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Category_News" Association="Self.FK_News_Category_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="News_Category" EntitySet="News_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Replys_Comment" Association="Self.FK_Replys_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Replys" EntitySet="Replys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Replys_Users" Association="Self.FK_Replys_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Replys" EntitySet="Replys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Dow_id" Association="Self.FK_Reports_Dow_id">
+            <End Role="Dow_id" EntitySet="Dow_id" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_News" Association="Self.FK_Reports_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Users" Association="Self.FK_Reports_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Category_Categorys" Association="Self.FK_User_Category_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="User_Category" EntitySet="User_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Category_Users" Association="Self.FK_User_Category_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="User_Category" EntitySet="User_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Sexs" Association="Self.FK_Users_Sexs">
+            <End Role="Sexs" EntitySet="Sexs" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vnnewsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ad_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="ad_dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="ad_note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="ad_active" Type="Boolean" />
+          <Property Name="ad_bin" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Ads_Users" FromRole="Ads" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="category_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="category_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="category_view" Type="Int32" />
+          <Property Name="category_active" Type="Boolean" />
+          <Property Name="category_bin" Type="Boolean" />
+          <NavigationProperty Name="News_Category" Relationship="Self.FK_News_Category_Categorys" FromRole="Categorys" ToRole="News_Category" />
+          <NavigationProperty Name="User_Category" Relationship="Self.FK_User_Category_Categorys" FromRole="Categorys" ToRole="User_Category" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="comment_id" />
+          </Key>
+          <Property Name="comment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comment_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="comment_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="comment_dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="comment_active" Type="Boolean" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="Self.FK_Comment_News" FromRole="Comment" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comment_Users" FromRole="Comment" ToRole="Users" />
+          <NavigationProperty Name="Replys" Relationship="Self.FK_Replys_Comment" FromRole="Comment" ToRole="Replys" />
+        </EntityType>
+        <EntityType Name="Contactad">
+          <Key>
+            <PropertyRef Name="contactads_id" />
+          </Key>
+          <Property Name="contactads_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactads_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="contactads_zalo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="contactads_fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contactads_email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="contactads_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contactads_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="contactads_dateend" Type="DateTime" Precision="3" />
+          <Property Name="contactads_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="contactads_browser" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Contactads_Users" FromRole="Contactads" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Dow_id">
+          <Key>
+            <PropertyRef Name="dow_id1" />
+          </Key>
+          <Property Name="dow_id1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dow_name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Dow_id" FromRole="Dow_id" ToRole="Reports" />
+        </EntityType>
+        <EntityType Name="Editor">
+          <Key>
+            <PropertyRef Name="editor_id" />
+          </Key>
+          <Property Name="editor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="editor_fullname" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="sex_id" Type="Int32" />
+          <Property Name="editor_fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="editor_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="editor_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="editor_introduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="editor_interests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="editor_enthusiasm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="editor_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="editor_dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="editor_browser" Type="Boolean" />
+          <NavigationProperty Name="Sex" Relationship="Self.FK_Editors_Sexs" FromRole="Editors" ToRole="Sexs" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Editors_Users" FromRole="Editors" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Favourite">
+          <Key>
+            <PropertyRef Name="favourite_id" />
+          </Key>
+          <Property Name="favourite_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="favourite_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="news_id" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="Self.FK_Favourites_News" FromRole="Favourites" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Favourites_Users" FromRole="Favourites" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="like_id" />
+          </Key>
+          <Property Name="like_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="like_datecreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="News" Relationship="Self.FK_Likes_News" FromRole="Likes" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Likes_Users" FromRole="Likes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="news_name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="news_view" Type="Int32" />
+          <Property Name="news_like" Type="Int32" />
+          <Property Name="news_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news_video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news_active" Type="Boolean" />
+          <Property Name="news_bin" Type="Boolean" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_News" FromRole="News" ToRole="Comment" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_News" FromRole="News" ToRole="Favourites" />
+          <NavigationProperty Name="Likes" Relationship="Self.FK_Likes_News" FromRole="News" ToRole="Likes" />
+          <NavigationProperty Name="News_Category" Relationship="Self.FK_News_Category_News" FromRole="News" ToRole="News_Category" />
+          <NavigationProperty Name="User" Relationship="Self.FK_News_Users" FromRole="News" ToRole="Users" />
+          <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_News" FromRole="News" ToRole="Reports" />
+        </EntityType>
+        <EntityType Name="News_Category">
+          <Key>
+            <PropertyRef Name="nc_id" />
+          </Key>
+          <Property Name="nc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="cn_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="category_id" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_News_Category_Categorys" FromRole="News_Category" ToRole="Categorys" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Category_News" FromRole="News_Category" ToRole="News" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="reply_id" />
+          </Key>
+          <Property Name="reply_id" Type="Int32" Nullable="false" />
+          <Property Name="comment_id" Type="Int32" />
+          <Property Name="reply_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="reply_dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="reply_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Replys_Comment" FromRole="Replys" ToRole="Comment" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Replys_Users" FromRole="Replys" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="report_id" />
+          </Key>
+          <Property Name="report_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="report_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="report_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="dow_id" Type="Int32" />
+          <NavigationProperty Name="Dow_id1" Relationship="Self.FK_Reports_Dow_id" FromRole="Reports" ToRole="Dow_id" />
+          <NavigationProperty Name="News" Relationship="Self.FK_Reports_News" FromRole="Reports" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Reports_Users" FromRole="Reports" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="role_active" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="sex_id" />
+          </Key>
+          <Property Name="sex_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sex_name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Editors" Relationship="Self.FK_Editors_Sexs" FromRole="Sexs" ToRole="Editors" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Sexs" FromRole="Sexs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User_Category">
+          <Key>
+            <PropertyRef Name="uc_id" />
+          </Key>
+          <Property Name="uc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="uc_datecreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_User_Category_Categorys" FromRole="User_Category" ToRole="Categorys" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Category_Users" FromRole="User_Category" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="user_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_datecreate" Type="DateTime" Precision="3" />
+          <Property Name="user_datelogin" Type="DateTime" Precision="3" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="user_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sex_id" Type="Int32" />
+          <Property Name="user_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="user_active" Type="Boolean" />
+          <Property Name="user_bin" Type="Boolean" />
+          <NavigationProperty Name="Ads" Relationship="Self.FK_Ads_Users" FromRole="Users" ToRole="Ads" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Users" FromRole="Users" ToRole="Comment" />
+          <NavigationProperty Name="Contactads" Relationship="Self.FK_Contactads_Users" FromRole="Users" ToRole="Contactads" />
+          <NavigationProperty Name="Editors" Relationship="Self.FK_Editors_Users" FromRole="Users" ToRole="Editors" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_Users" FromRole="Users" ToRole="Favourites" />
+          <NavigationProperty Name="Likes" Relationship="Self.FK_Likes_Users" FromRole="Users" ToRole="Likes" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="Users" ToRole="News" />
+          <NavigationProperty Name="Replys" Relationship="Self.FK_Replys_Users" FromRole="Users" ToRole="Replys" />
+          <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Users" FromRole="Users" ToRole="Reports" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Sex" Relationship="Self.FK_Users_Sexs" FromRole="Users" ToRole="Sexs" />
+          <NavigationProperty Name="User_Category" Relationship="Self.FK_User_Category_Users" FromRole="Users" ToRole="User_Category" />
+        </EntityType>
+        <Association Name="FK_Ads_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Ads" Type="Self.Ad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Ads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Category_Categorys">
+          <End Role="Categorys" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="News_Category" Type="Self.News_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="News_Category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Category_Categorys">
+          <End Role="Categorys" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="User_Category" Type="Self.User_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="User_Category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Replys_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="Replys" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="comment_id" />
+            </Principal>
+            <Dependent Role="Replys">
+              <PropertyRef Name="comment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactads_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Contactads" Type="Self.Contactad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Contactads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Dow_id">
+          <End Role="Dow_id" Type="Self.Dow_id" Multiplicity="0..1" />
+          <End Role="Reports" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dow_id">
+              <PropertyRef Name="dow_id1" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="dow_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Editors_Sexs">
+          <End Role="Sexs" Type="Self.Sex" Multiplicity="0..1" />
+          <End Role="Editors" Type="Self.Editor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexs">
+              <PropertyRef Name="sex_id" />
+            </Principal>
+            <Dependent Role="Editors">
+              <PropertyRef Name="sex_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Editors_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Editors" Type="Self.Editor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Editors">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Favourites" Type="Self.Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Favourites" Type="Self.Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Likes_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Likes" Type="Self.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Likes">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Likes_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Likes" Type="Self.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Likes">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Category_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="News_Category" Type="Self.News_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="News_Category">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1" />
+          <End Role="Reports" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Replys_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Replys" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Replys">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Reports" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Sexs">
+          <End Role="Sexs" Type="Self.Sex" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexs">
+              <PropertyRef Name="sex_id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="sex_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Category_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User_Category" Type="Self.User_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="User_Category">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vnnewsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ads" EntityType="Self.Ad" />
+          <EntitySet Name="Categorys" EntityType="Self.Category" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Contactads" EntityType="Self.Contactad" />
+          <EntitySet Name="Dow_id" EntityType="Self.Dow_id" />
+          <EntitySet Name="Editors" EntityType="Self.Editor" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourite" />
+          <EntitySet Name="Likes" EntityType="Self.Like" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="News_Category" EntityType="Self.News_Category" />
+          <EntitySet Name="Replys" EntityType="Self.Reply" />
+          <EntitySet Name="Reports" EntityType="Self.Report" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Sexs" EntityType="Self.Sex" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="User_Category" EntityType="Self.User_Category" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Ads_Users" Association="Self.FK_Ads_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Ads" EntitySet="Ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Category_Categorys" Association="Self.FK_News_Category_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="News_Category" EntitySet="News_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Category_Categorys" Association="Self.FK_User_Category_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="User_Category" EntitySet="User_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_News" Association="Self.FK_Comment_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Users" Association="Self.FK_Comment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Replys_Comment" Association="Self.FK_Replys_Comment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Replys" EntitySet="Replys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactads_Users" Association="Self.FK_Contactads_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contactads" EntitySet="Contactads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Dow_id" Association="Self.FK_Reports_Dow_id">
+            <End Role="Dow_id" EntitySet="Dow_id" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Editors_Sexs" Association="Self.FK_Editors_Sexs">
+            <End Role="Sexs" EntitySet="Sexs" />
+            <End Role="Editors" EntitySet="Editors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Editors_Users" Association="Self.FK_Editors_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Editors" EntitySet="Editors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_News" Association="Self.FK_Favourites_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_Users" Association="Self.FK_Favourites_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Likes_News" Association="Self.FK_Likes_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Likes" EntitySet="Likes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Likes_Users" Association="Self.FK_Likes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Likes" EntitySet="Likes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Category_News" Association="Self.FK_News_Category_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="News_Category" EntitySet="News_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_News" Association="Self.FK_Reports_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Replys_Users" Association="Self.FK_Replys_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Replys" EntitySet="Replys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Users" Association="Self.FK_Reports_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Sexs" Association="Self.FK_Users_Sexs">
+            <End Role="Sexs" EntitySet="Sexs" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Category_Users" Association="Self.FK_User_Category_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="User_Category" EntitySet="User_Category" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vnnewsModelStoreContainer" CdmEntityContainer="vnnewsEntities">
+          <EntitySetMapping Name="Ads">
+            <EntityTypeMapping TypeName="vnnewsModel.Ad">
+              <MappingFragment StoreEntitySet="Ads">
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="ad_img" ColumnName="ad_img" />
+                <ScalarProperty Name="ad_datecreate" ColumnName="ad_datecreate" />
+                <ScalarProperty Name="ad_dateupdate" ColumnName="ad_dateupdate" />
+                <ScalarProperty Name="ad_note" ColumnName="ad_note" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="ad_active" ColumnName="ad_active" />
+                <ScalarProperty Name="ad_bin" ColumnName="ad_bin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorys">
+            <EntityTypeMapping TypeName="vnnewsModel.Category">
+              <MappingFragment StoreEntitySet="Categorys">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="category_img" ColumnName="category_img" />
+                <ScalarProperty Name="category_datecreate" ColumnName="category_datecreate" />
+                <ScalarProperty Name="category_view" ColumnName="category_view" />
+                <ScalarProperty Name="category_active" ColumnName="category_active" />
+                <ScalarProperty Name="category_bin" ColumnName="category_bin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="vnnewsModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+                <ScalarProperty Name="comment_content" ColumnName="comment_content" />
+                <ScalarProperty Name="comment_datecreate" ColumnName="comment_datecreate" />
+                <ScalarProperty Name="comment_dateupdate" ColumnName="comment_dateupdate" />
+                <ScalarProperty Name="comment_active" ColumnName="comment_active" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactads">
+            <EntityTypeMapping TypeName="vnnewsModel.Contactad">
+              <MappingFragment StoreEntitySet="Contactads">
+                <ScalarProperty Name="contactads_id" ColumnName="contactads_id" />
+                <ScalarProperty Name="contactads_phone" ColumnName="contactads_phone" />
+                <ScalarProperty Name="contactads_zalo" ColumnName="contactads_zalo" />
+                <ScalarProperty Name="contactads_fb" ColumnName="contactads_fb" />
+                <ScalarProperty Name="contactads_email" ColumnName="contactads_email" />
+                <ScalarProperty Name="contactads_content" ColumnName="contactads_content" />
+                <ScalarProperty Name="contactads_datecreate" ColumnName="contactads_datecreate" />
+                <ScalarProperty Name="contactads_dateend" ColumnName="contactads_dateend" />
+                <ScalarProperty Name="contactads_name" ColumnName="contactads_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="contactads_browser" ColumnName="contactads_browser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dow_id">
+            <EntityTypeMapping TypeName="vnnewsModel.Dow_id">
+              <MappingFragment StoreEntitySet="Dow_id">
+                <ScalarProperty Name="dow_id1" ColumnName="dow_id" />
+                <ScalarProperty Name="dow_name" ColumnName="dow_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editors">
+            <EntityTypeMapping TypeName="vnnewsModel.Editor">
+              <MappingFragment StoreEntitySet="Editors">
+                <ScalarProperty Name="editor_id" ColumnName="editor_id" />
+                <ScalarProperty Name="editor_fullname" ColumnName="editor_fullname" />
+                <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+                <ScalarProperty Name="editor_fb" ColumnName="editor_fb" />
+                <ScalarProperty Name="editor_phone" ColumnName="editor_phone" />
+                <ScalarProperty Name="editor_time" ColumnName="editor_time" />
+                <ScalarProperty Name="editor_introduce" ColumnName="editor_introduce" />
+                <ScalarProperty Name="editor_interests" ColumnName="editor_interests" />
+                <ScalarProperty Name="editor_enthusiasm" ColumnName="editor_enthusiasm" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="editor_datecreate" ColumnName="editor_datecreate" />
+                <ScalarProperty Name="editor_dateupdate" ColumnName="editor_dateupdate" />
+                <ScalarProperty Name="editor_browser" ColumnName="editor_browser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favourites">
+            <EntityTypeMapping TypeName="vnnewsModel.Favourite">
+              <MappingFragment StoreEntitySet="Favourites">
+                <ScalarProperty Name="favourite_id" ColumnName="favourite_id" />
+                <ScalarProperty Name="favourite_datecreate" ColumnName="favourite_datecreate" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Likes">
+            <EntityTypeMapping TypeName="vnnewsModel.Like">
+              <MappingFragment StoreEntitySet="Likes">
+                <ScalarProperty Name="like_id" ColumnName="like_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="like_datecreate" ColumnName="like_datecreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="vnnewsModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="news_name" ColumnName="news_name" />
+                <ScalarProperty Name="news_content" ColumnName="news_content" />
+                <ScalarProperty Name="news_datecreate" ColumnName="news_datecreate" />
+                <ScalarProperty Name="news_view" ColumnName="news_view" />
+                <ScalarProperty Name="news_like" ColumnName="news_like" />
+                <ScalarProperty Name="news_img" ColumnName="news_img" />
+                <ScalarProperty Name="news_video" ColumnName="news_video" />
+                <ScalarProperty Name="news_active" ColumnName="news_active" />
+                <ScalarProperty Name="news_bin" ColumnName="news_bin" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News_Category">
+            <EntityTypeMapping TypeName="vnnewsModel.News_Category">
+              <MappingFragment StoreEntitySet="News_Category">
+                <ScalarProperty Name="nc_id" ColumnName="nc_id" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="cn_datecreate" ColumnName="cn_datecreate" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Replys">
+            <EntityTypeMapping TypeName="vnnewsModel.Reply">
+              <MappingFragment StoreEntitySet="Replys">
+                <ScalarProperty Name="reply_id" ColumnName="reply_id" />
+                <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+                <ScalarProperty Name="reply_datecreate" ColumnName="reply_datecreate" />
+                <ScalarProperty Name="reply_dateupdate" ColumnName="reply_dateupdate" />
+                <ScalarProperty Name="reply_content" ColumnName="reply_content" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="vnnewsModel.Report">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="report_id" ColumnName="report_id" />
+                <ScalarProperty Name="report_content" ColumnName="report_content" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="report_datecreate" ColumnName="report_datecreate" />
+                <ScalarProperty Name="dow_id" ColumnName="dow_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="vnnewsModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="role_active" ColumnName="role_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexs">
+            <EntityTypeMapping TypeName="vnnewsModel.Sex">
+              <MappingFragment StoreEntitySet="Sexs">
+                <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+                <ScalarProperty Name="sex_name" ColumnName="sex_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="vnnewsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Category">
+            <EntityTypeMapping TypeName="vnnewsModel.User_Category">
+              <MappingFragment StoreEntitySet="User_Category">
+                <ScalarProperty Name="uc_id" ColumnName="uc_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="uc_datecreate" ColumnName="uc_datecreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="vnnewsModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_pass" ColumnName="user_pass" />
+                <ScalarProperty Name="user_datecreate" ColumnName="user_datecreate" />
+                <ScalarProperty Name="user_datelogin" ColumnName="user_datelogin" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_img" ColumnName="user_img" />
+                <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_active" ColumnName="user_active" />
+                <ScalarProperty Name="user_bin" ColumnName="user_bin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

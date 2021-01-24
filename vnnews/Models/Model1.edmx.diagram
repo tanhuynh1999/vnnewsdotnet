@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23c95b68974a4754ac2c98924eac89d6" Name="Diagram1">
+        <EntityTypeShape EntityType="vnnewsModel.Ad" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Category" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Comment" Width="1.5" PointX="10.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Contactad" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Dow_id" Width="1.5" PointX="8.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Editor" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Favourite" Width="1.5" PointX="13.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Like" Width="1.5" PointX="13.5" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.News" Width="1.5" PointX="8.25" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.News_Category" Width="1.5" PointX="10.5" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Reply" Width="1.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Report" Width="1.5" PointX="10.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Role" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.Sex" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.User_Category" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="vnnewsModel.User" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="vnnewsModel.FK_Ads_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_News_Category_Categorys" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_User_Category_Categorys" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Comment_News" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Comment_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Replys_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Contactads_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Reports_Dow_id" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Editors_Sexs" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Editors_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Favourites_News" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Favourites_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Likes_News" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Likes_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_News_Category_News" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_News_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Reports_News" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Replys_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Reports_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_Users_Sexs" ManuallyRouted="false" />
+        <AssociationConnector Association="vnnewsModel.FK_User_Category_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

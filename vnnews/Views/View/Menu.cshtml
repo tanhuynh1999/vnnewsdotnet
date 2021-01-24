@@ -1,6 +1,7 @@
 ﻿@using vnnews.Models
 @{ 
     vnnewsEntities db = new vnnewsEntities();
+    HttpCookie cookie = Request.Cookies["user_id"];
 }
 @{ 
     List<Category> categories = db.Categorys.ToList();
@@ -9,7 +10,7 @@
     <!--/nav-->
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/">
                 <span class="fa fa-pencil-square-o"></span> VNNEWS
             </a>
             <!-- if logo is image enable this
@@ -27,25 +28,30 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Trang chủ</a>
+                        <a class="nav-link" href="index.html"><i class="fa fa-home">&nbsp;</i>Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Top danh mục <span class="fa fa-angle-down"></span>
+                            <i class="fa fa-align-center">&nbsp;</i>Top danh mục <span class="fa fa-angle-down"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach (var item in categories.Where(n => n.category_active == true && n.category_bin == false).OrderByDescending(n => n.category_view))
-                            {
-                                <a class="dropdown-item font-weight-bold" href="lifestyle.html"><i class="fa fa-star text-warning">&nbsp;</i>@item.category_name <span style="float: right">(@item.category_view)</span></a>
-                            }
+                            <a class="dropdown-item font-weight-bold" href="lifestyle.html">
+                                <h1>aa</h1>
+                                <h1>aa</h1>
+                                <h1>aa</h1>
+                                <h1>aa</h1>
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Tin tức</a>
+                        <a class="nav-link" href="@Url.Action("Index","News")"><i class="fa fa-newspaper-o">&nbsp;</i>Tin tức mới</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Kiếm tiền</a>
+                        <a class="nav-link" href="contact.html"><i class="fa fa-video-camera">&nbsp;</i>Video</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fa fa-dollar">&nbsp;</i>Kiếm tiền</a>
                     </li>
                 </ul>
 
@@ -68,17 +74,30 @@
                 </div>
                 <!--//search-right-->
                 <!-- author -->
-                <div class="header-author d-flex ml-lg-4 pl-2 mt-lg-0 mt-3">
-                    <a class="img-circle img-circle-sm" href="#author">
-                        <img src="~/Content/Layout/images/author.jpg" class="img-fluid" alt="...">
-                    </a>
-                    <div class="align-self ml-3">
-                        <a href="#author">
-                            <h5>Alexander</h5>
+                @if (cookie != null)
+                {
+                    <div class="header-author d-flex ml-lg-4 pl-2 mt-lg-0 mt-3">
+                        <a class="img-circle img-circle-sm" href="#author">
+                            <img src="~/Content/Layout/images/author.jpg" class="img-fluid" alt="...">
                         </a>
-                        <span>Blog Writer</span>
+                        <div class="align-self ml-3">
+                            <a href="#author">
+                                <h5>Alexander</h5>
+                            </a>
+                            <span>Blog Writer</span>
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="header-author d-flex ml-lg-4 pl-2 mt-lg-0 mt-3">
+                        <div class="align-self ml-3">
+                            <a href="" data-toggle="modal" data-target="#login">
+                                <h5><i class="fa fa-sign-in">&nbsp;</i>Đăng nhập</h5>
+                            </a>
+                        </div>
+                    </div>
+                }
                 <!-- // author-->
             </div>
 
@@ -101,3 +120,104 @@
     </nav>
     <!--//nav-->
 </header>
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Đăng nhập</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Đăng ký</a>
+                </div>
+                <div class="tab-content mt-5" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4 class="text-danger text-center">
+                                    Đăng nhập bằng email</h4>
+                                    <form class="ui form" role="form" method="post" action="">
+                                        <div class="field">
+                                            <label>Email</label>
+                                            <input class="form-control" type="email" name="user_email" placeholder="Nhập email vnnews">
+                                        </div>
+                                        <div class="field">
+                                            <label>Mật khẩu</label>
+                                            <input class="" type="password" name="user_pass" placeholder="Nhập mật khẩu vnnews">
+                                        </div>
+                                        <div class="row px-3 mb-4">
+                                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Nhớ mật khẩu</label> </div> <a href="#" class="ml-auto mb-0 text-sm">Quên mật khẩu?</a>
+                                        </div>
+
+                                        <div class="row mb-3 px-3"> <button type="submit" class="ui primary submit button w-100">Đăng nhập</button> </div>
+                                        <div class="ui error message"></div>
+                                    </form>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="text-danger text-center">
+                                    Đăng nhập bằng</h4>
+                                    <button class="ui facebook button w-100 mt-4" onclick="">
+                                        <i class="facebook icon"></i>
+                                        Facebook
+                                    </button>
+                                    <button class="ui google plus button w-100 mt-2">
+                                        <i class="google plus icon"></i>
+                                        Google Plus
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4 class="text-danger text-center">
+                                    Đăng ký bằng email</h4>
+                                    <form onsubmit="return" class="ui form" role="form" method="post" action="" enctype="multipart/form-data">
+                                        <div class="field">
+                                            <label>Tên hiển thị</label>
+                                            <input class="form-control" type="text" name="user_name" placeholder="Nhập tên hiển thị">
+                                        </div>
+                                        <div class="field">
+                                            <label>Email</label>
+                                            <input class="form-control" type="text" name="user_email" placeholder="Nhập email vnnews">
+                                        </div>
+                                        <div class="field">
+                                            <label>Mật khẩu</label>
+                                            <input class="form-control" type="password" name="user_pass" placeholder="Nhập mật khẩu vnnews">
+                                        </div>
+                                        <div class="field">
+                                            <label>Xác nhận mật khẩu</label>
+                                            <input class="form-control" type="password" name="user_passres" placeholder="Xác nhận mật khẩu vnnews" empty>
+                                        </div>
+                                        <div class="row px-3 mb-4">
+                                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Thỏa thuận</label> </div> <a href="#" class="ml-auto mb-0 text-sm">Quên mật khẩu?</a>
+                                        </div>
+
+                                        <div class="row mb-3 px-3"> <button type="submit" class="ui primary submit button w-100">Đăng ký</button> </div>
+
+                                        <div class="ui error message"></div>
+                                        <script async custom-element="amp-auto-ads"
+                                                src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+                                        </script>
+                                        <amp-auto-ads type="adsense"
+                                                      data-ad-client="ca-pub-6341809618883100">
+                                        </amp-auto-ads>
+                                    </form>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="text-danger text-center">
+                                    Đăng nhập bằng</h4>
+                                    <button class="ui facebook button w-100 mt-4" onclick="window.location.href='/vnnews/login/facebook'">
+                                        <i class="facebook icon"></i>
+                                        Facebook
+                                    </button>
+                                    <button class="ui google plus button w-100 mt-2">
+                                        <i class="google plus icon"></i>
+                                        Google Plus
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,9 +9,9 @@ namespace vnnews.Areas.Admin.Controllers
     public class ViewAdminController : Controller
     {
         // GET: Admin/ViewAdmin
-        public ActionResult Index()
+        public PartialViewResult Menu()
         {
-            return View();
+            return PartialView();
         }
     }
 }

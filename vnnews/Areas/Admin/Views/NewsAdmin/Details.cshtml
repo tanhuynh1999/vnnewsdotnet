@@ -1,0 +1,99 @@
+﻿@model vnnews.Models.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.news_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_datecreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_datecreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_view)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_view)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_like)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_like)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_video)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_video)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.news_bin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.news_bin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.user_email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.news_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

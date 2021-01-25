@@ -1,0 +1,75 @@
+﻿@model vnnews.Models.Ad
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_datecreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_datecreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_dateupdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_dateupdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_bin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_bin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.user_email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ad_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

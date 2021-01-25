@@ -1,0 +1,70 @@
+﻿@model IEnumerable<vnnews.Models.Ad>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_datecreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_dateupdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_bin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.user_email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_datecreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_dateupdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_bin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.user_email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ad_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ad_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ad_id })
+        </td>
+    </tr>
+}
+
+</table>

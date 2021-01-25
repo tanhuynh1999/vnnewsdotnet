@@ -1,0 +1,94 @@
+﻿@model IEnumerable<vnnews.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_pass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_datecreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_datelogin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_bin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role.role_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex.sex_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_pass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_datecreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_datelogin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_bin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.role_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex.sex_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.user_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.user_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.user_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,48 @@
+﻿@model vnnews.Models.Ad
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "AdsAdmin", FormMethod.Post, new { @enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Ad</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ad_id)
+        @Html.HiddenFor(model => model.user_id)
+        @Html.HiddenFor(model => model.ad_img)
+        @Html.HiddenFor(model => model.ad_datecreate)
+        @Html.HiddenFor(model => model.ad_active)
+        @Html.HiddenFor(model => model.ad_bin)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad_img, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" class="btn btn-danger" name="file_img" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad_note, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ad_note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ad_note, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

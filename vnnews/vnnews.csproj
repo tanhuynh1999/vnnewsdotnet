@@ -183,13 +183,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ViewAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\ToolsController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,8 +221,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\JsonFavourite.cs" />
-    <Compile Include="Models\JsonNews.cs" />
     <Compile Include="Models\Like.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -4473,9 +4475,6 @@
     <Content Include="Content\Layout\js\bootstrap.min.js" />
     <Content Include="Content\Layout\js\jquery-3.3.1.min.js" />
     <Content Include="Content\Layout\js\theme-change.js" />
-    <Content Include="Content\PageList\list.js" />
-    <Content Include="Content\PageList\ui.css" />
-    <Content Include="Content\PageList\ui.js" />
     <Content Include="Content\Semantic-UI-CSS-master\components\accordion.css" />
     <Content Include="Content\Semantic-UI-CSS-master\components\accordion.js" />
     <Content Include="Content\Semantic-UI-CSS-master\components\accordion.min.css" />
@@ -4749,11 +4748,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model1.edmx">
@@ -5330,8 +5324,31 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ViewAdmin\Menu.cshtml" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Areas\Admin\Views\AdsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentsAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -5387,7 +5404,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Views\Tools\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

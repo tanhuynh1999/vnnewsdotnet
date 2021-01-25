@@ -1,0 +1,64 @@
+﻿@model IEnumerable<vnnews.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.comment_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comment_datecreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comment_dateupdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comment_active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News.news_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.user_email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.comment_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comment_datecreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comment_dateupdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comment_active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News.news_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.user_email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.comment_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.comment_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.comment_id })
+        </td>
+    </tr>
+}
+
+</table>

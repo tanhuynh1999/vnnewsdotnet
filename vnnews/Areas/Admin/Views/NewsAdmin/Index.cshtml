@@ -1,0 +1,88 @@
+﻿@model IEnumerable<vnnews.Models.News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.news_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_datecreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_view)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_like)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_video)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.news_bin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.user_email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_datecreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_view)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_like)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_video)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.news_bin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.user_email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.news_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.news_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.news_id })
+        </td>
+    </tr>
+}
+
+</table>

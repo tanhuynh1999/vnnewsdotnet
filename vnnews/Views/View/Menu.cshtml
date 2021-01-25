@@ -82,9 +82,20 @@
                         </a>
                         <div class="align-self ml-3">
                             <a href="#author">
-                                <h5>Hi, @db.Users.Find(int.Parse(cookie.Value.ToString())).user_name</h5>
+                                <h5>Chào, @db.Users.Find(int.Parse(cookie.Value.ToString())).user_name</h5>
                             </a>
-                            <span>Blog Writer</span>
+                            <div class="dropdown text-blue">
+                                <span class="dropdown-toggle w-100" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tài khoản&nbsp;&nbsp;<i class="fa fa-angle-down font-weight-bold">&nbsp;</i>
+                                </span>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-heart text-danger">&nbsp;</i>Tin yêu thích</a>
+                                    <a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-comment text-primary">&nbsp;</i>Bình luận của bạn</a>
+                                    <a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-user text-success">&nbsp;</i>Cài đặt hồ sơ</a>
+                                    <a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-edit text-warning">&nbsp;</i>Biên tập viên</a>
+                                    <a class="dropdown-item font-weight-bold" href="#"><i class="fa fa-sign-out text-dark">&nbsp;</i>Đăng xuất</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }

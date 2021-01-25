@@ -13,7 +13,27 @@ namespace vnnews.Controllers
     public class NewsController : Controller
     {
         private vnnewsEntities db = new vnnewsEntities();
+        //Json news
+        public JsonResult JsonNews()
+        {
+            List<News> news = db.News.Where(n=>n.news_active == true && n.news_bin == false && n.User.user_active == true).OrderByDescending(n=>n.news_datecreate).ToList();
+            List<JsonNews> list = news.Select(n => new JsonNews
+            {
+                active = n.news_active,
+                bin = n.news_bin,
+                content = n.news_content,
+                datecreate = n.news_datecreate.ToString(),
+                id = n.news_id,
+                idus = (int)n.user_id,
+                img = n.news_img,
+                name = n.news_name,
+                usname = n.User.user_name,
+                usrole = n.User.Role.role_name,
+                view = (int)n.news_view
 
+            }).ToList();
+            return Json(list,JsonRequestBehavior.AllowGet);
+        }
         // GET: News
         public ActionResult Index()
         {

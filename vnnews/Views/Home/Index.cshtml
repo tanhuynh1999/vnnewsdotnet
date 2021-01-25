@@ -16,13 +16,13 @@
                 {
                     <div class="card mt-3">
                         <div class="card-header p-0 position-relative">
-                            <a href="#blog-single">
+                            <a href="/news/details/@item.news_id">
                                 <img class="card-img-bottom d-block radius-image" src="~/Images/@item.news_img"
                                      alt="Card image cap">
                             </a>
                         </div>
                         <div class="card-body p-0 blog-details">
-                            <a href="#blog-single" class="blog-desc">
+                            <a href="/news/details/@item.news_id" class="blog-desc">
                                 @item.news_name
                             </a>
                             <div class="author align-items-center mt-3 mb-1">
@@ -48,12 +48,12 @@
                     @foreach (var item in news.Where(n => n.news_active == true && n.news_bin == false && n.User.user_active == true).OrderByDescending(n => n.news_datecreate).Take(7))
                     {
                         <div class="grids5-info mt-3">
-                            <a href="#blog-single" class="d-block zoom">
+                            <a href="/news/details/@item.news_id" class="d-block zoom">
                                 <img src="~/Images/@item.news_img" alt=""
                                      class="img-fluid radius-image news-image">
                             </a>
                             <div class="blog-info align-self">
-                                <a href="#blog-single" class="blog-desc1">
+                                <a href="/news/details/@item.news_id" class="blog-desc1">
                                     @item.news_name
                                 </a>
                                 <div class="author align-items-center mt-3 mb-1">
@@ -82,7 +82,7 @@
             <div class="grids5-info">
                 <h4><i class="fa fa-star text-warning"></i></h4>
                 <div class="blog-info">
-                    <a href="#blog-single" class="blog-desc1">
+                    <a href="/news/details/@item.news_id" class="blog-desc1">
                         @item.news_name
                     </a>
                     <div class="author align-items-center mt-2 mb-1">
@@ -118,7 +118,7 @@
             </p>
             <ul class="blog-meta mt-5">
                 <li class="meta-item blog-lesson">
-                    <button class="btn btn-danger">Xem tất cả tin tức</button>
+                    <a href="/News" class="btn btn-danger">Xem tất cả tin tức</a>
                 </li>
                 <li class="meta-item blog-students">
                     <button class="btn btn-danger">Đăng ký biên tập viên</button>
@@ -139,12 +139,12 @@
                 @foreach (var item in news.Where(n => n.news_active == true && n.news_bin == false && n.User.user_active == true && n.news_datecreate.Value.ToString("dd/MM/yyy") == DateTime.Now.ToString("dd/MM/yyyy")).OrderByDescending(n => n.news_view).Take(5))
                 {
                     <div class="grids5-info mt-3">
-                        <a href="#blog-single" class="d-block zoom">
+                        <a href="/news/details/@item.news_id" class="d-block zoom">
                             <img src="~/Images/@item.news_img" alt=""
                                  class="img-fluid radius-image news-image">
                         </a>
                         <div class="blog-info align-self">
-                            <a href="#blog-single" class="blog-desc1">
+                            <a href="/news/details/@item.news_id" class="blog-desc1">
                                @item.news_name
                             </a>
                             <div class="author align-items-center mt-3 mb-1">
@@ -171,12 +171,12 @@
                 @foreach (var item in news.Where(n => n.news_active == true && n.news_bin == false && n.User.user_active == true).OrderByDescending(n => n.news_view).Take(5))
                 {
                     <div class="grids5-info mt-3">
-                        <a href="#blog-single" class="d-block zoom">
+                        <a href="/news/details/@item.news_id" class="d-block zoom">
                             <img src="~/Images/@item.news_img" alt=""
                                  class="img-fluid radius-image news-image">
                         </a>
                         <div class="blog-info align-self">
-                            <a href="#blog-single" class="blog-desc1">
+                            <a href="/news/details/@item.news_id" class="blog-desc1">
                                 @item.news_name
                             </a>
                             <div class="author align-items-center mt-3 mb-1">

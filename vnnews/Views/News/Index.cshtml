@@ -1,18 +1,23 @@
-﻿@model IEnumerable<vnnews.Models.News>
+﻿@using vnnews.Models
+@model IEnumerable<vnnews.Models.News>
 
 @{
+    vnnewsEntities db = new vnnewsEntities();
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{ 
+    List<News> news = db.News.ToList();
+}
 
-<div class="row">
-    <div class="col-lg-8 most-recent">
+<div class="row" ng-app="myApp">
+    <div class="col-lg-8 most-recent" ng-controller="myCtrl">
         <div class="row">
             <div class="col-lg-12">
                 <label class="font-weight-bold"><i class="fa fa-search">&nbsp;</i>Từ khóa</label>
                 <div class="ui search">
                     <div class="ui icon input w-100">
-                        <input class="prompt w-100 font-weight-bold" style="border-radius: 0px 0px 0px 0px;" type="text" placeholder="Bạn tìm gì...">
+                        <input ng-model="textSearch.name" class="prompt w-100 font-weight-bold" style="border-radius: 0px 0px 0px 0px;" type="text" placeholder="Bạn tìm gì...">
                         <i class="search icon"></i>
                     </div>
                     <div class="results"></div>
@@ -35,123 +40,31 @@
                 </select>
             </div>
             <div class="col-lg-12 mt-5">
-                <h3 class="section-title-left">Có 20 tin tức</h3>
+                <h3 class="section-title-left">Có {{(list | filter:textSearch).length}} tin tức</h3>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-6 col-md-6 item pt-lg-3">
+            <div class="col-lg-6 col-md-6 item pt-lg-3" ng-repeat="list in list | filter: textSearch">
                 <div class="card">
                     <div class="card-header p-0 position-relative">
-                        <a href="#blog-single">
-                            <img class="card-img-bottom d-block radius-image" src="~/Content/Layout/images/p1.jpg" alt="Card image cap">
+                        <a href="/News/Details/{{list.id}}">
+                            <img class="card-img-bottom d-block radius-image" style="height: 250px" src="~/Images/{{list.img}}" alt="Card image cap">
                         </a>
                     </div>
                     <div class="card-body p-0 blog-details">
-                        <a href="#blog-single" class="blog-desc">
-                            How to Start a Blog and make money every Month from it
+                        <a href="/News/Details/{{list.id}}" class="blog-desc">
+                            {{list.name}}
                         </a>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                            vitae sit.
-                        </p>
                         <div class="author align-items-center mt-3 mb-1">
-                            <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
+                            <a href="#author">{{list.usname}}</a> đăng bởi <a href="#url">{{list.usrole}}</a>
                         </div>
                         <ul class="blog-meta">
                             <li class="meta-item blog-lesson">
-                                <span class="meta-value"> April 13, 2020 </span>
+                                <span class="meta-value"> Đăng lúc {{list.datecreate}} </span>
                             </li>
                             <li class="meta-item blog-students">
-                                <span class="meta-value"> 6min read</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 item pt-lg-3">
-                <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#blog-single">
-                            <img class="card-img-bottom d-block radius-image" src="~/Content/Layout/images/p4.jpg" alt="Card image cap">
-                        </a>
-                    </div>
-                    <div class="card-body p-0 blog-details">
-                        <a href="#blog-single" class="blog-desc">
-                            What’s better than following your passion and making income
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                            vitae sit.
-                        </p>
-                        <div class="author align-items-center mt-3 mb-1">
-                            <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                        </div>
-                        <ul class="blog-meta">
-                            <li class="meta-item blog-lesson">
-                                <span class="meta-value"> April 13, 2020 </span>
-                            </li>
-                            <li class="meta-item blog-students">
-                                <span class="meta-value"> 6min read</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
-                <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#blog-single">
-                            <img class="card-img-bottom d-block radius-image" src="~/Content/Layout/images/p3.jpg" alt="Card image cap">
-                        </a>
-                    </div>
-                    <div class="card-body p-0 blog-details">
-                        <a href="#blog-single" class="blog-desc">
-                            Without further delay, let’s learn how you can start a blog today.
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                            vitae sit.
-                        </p>
-                        <div class="author align-items-center mt-3 mb-1">
-                            <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                        </div>
-                        <ul class="blog-meta">
-                            <li class="meta-item blog-lesson">
-                                <span class="meta-value"> April 13, 2020 </span>
-                            </li>
-                            <li class="meta-item blog-students">
-                                <span class="meta-value"> 6min read</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
-                <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#blog-single">
-                            <img class="card-img-bottom d-block radius-image" src="~/Content/Layout/images/p7.jpg"
-                                 alt="Card image cap">
-                        </a>
-                    </div>
-                    <div class="card-body p-0 blog-details">
-                        <a href="#blog-single" class="blog-desc">
-                            Either way, Blogging could help you achieve your goal.
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Qui eligendi
-                            vitae sit.
-                        </p>
-                        <div class="author align-items-center mt-3 mb-1">
-                            <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                        </div>
-                        <ul class="blog-meta">
-                            <li class="meta-item blog-lesson">
-                                <span class="meta-value"> April 13, 2020 </span>
-                            </li>
-                            <li class="meta-item blog-students">
-                                <span class="meta-value"> 6min read</span>
+                                <span class="meta-value">{{list.view}} lượt xem</span>
                             </li>
                         </ul>
                     </div>
@@ -162,98 +75,59 @@
         <!-- pagination -->
         <div class="pagination-wrapper mt-5">
             <ul class="page-pagination">
-                <li><span aria-current="page" class="page-numbers current">1</span></li>
-                <li><a class="page-numbers" href="#url">2</a></li>
-                <li><a class="page-numbers" href="#url">3</a></li>
-                <li><a class="page-numbers" href="#url">4</a></li>
-                <li><a class="page-numbers" href="#url">....</a></li>
-                <li><a class="page-numbers" href="#url">15</a></li>
-                <li><a class="next" href="#url"><span class="fa fa-angle-right"></span></a></li>
-            </ul>
+            <li><span aria-current="page" class="page-numbers current">1</span></li>
+            <li><a class="page-numbers" href="#url">2</a></li>
+            <li><a class="page-numbers" href="#url">3</a></li>
+            <li><a class="page-numbers" href="#url">4</a></li>
+            <li><a class="page-numbers" href="#url">....</a></li>
+            <li><a class="page-numbers" href="#url">15</a></li>
+            <li><a class="next" href="#url"><span class="fa fa-angle-right"></span></a></li>
+        </ul>
         </div>
         <!-- //pagination -->
     </div>
     <div class="col-lg-4 trending mt-lg-0 mt-5 mb-lg-5">
         <div class="pos-sticky">
-            <h3 class="section-title-left">Danh mục </h3>
+            <h3 class="section-title-left">Tin tức đáng chú ý</h3>
 
-            <div class="grids5-info">
-                <h4>01.</h4>
-                <div class="blog-info">
-                    <a href="#blog-single" class="blog-desc1">
-                        You can always change your domain name in the future if you like.
-                    </a>
-                    <div class="author align-items-center mt-2 mb-1">
-                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
+            @foreach (var item in news.Where(n => n.news_active == true && n.news_bin == false && n.User.user_active == true).OrderByDescending(n => n.news_view).Take(15))
+            {
+                <div class="grids5-info">
+                    <h4><i class="fa fa-star text-warning"></i></h4>
+                    <div class="blog-info">
+                        <a href="#blog-single" class="blog-desc1">
+                            @item.news_name
+                        </a>
+                        <div class="author align-items-center mt-2 mb-1">
+                            <a href="#author">@item.User.user_name</a> bởi một <a href="#url">@item.User.Role.role_name</a>
+                        </div>
+                        <ul class="blog-meta">
+                            <li class="meta-item blog-lesson">
+                                <span class="meta-value">Đăng vào @item.news_datecreate.Value.ToString("dd/MM/yyyy") </span>
+                            </li>
+                            <li class="meta-item blog-students">
+                                <span class="meta-value"> @item.news_view lượt xem</span>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="blog-meta">
-                        <li class="meta-item blog-lesson">
-                            <span class="meta-value"> April 13, 2020 </span>
-                        </li>
-                        <li class="meta-item blog-students">
-                            <span class="meta-value"> 6min read</span>
-                        </li>
-                    </ul>
                 </div>
-            </div>
-            <div class="grids5-info">
-                <h4>02.</h4>
-                <div class="blog-info">
-                    <a href="#blog-single" class="blog-desc1">
-                        Pick a domain name & hosting for your blog
-                    </a>
-                    <div class="author align-items-center mt-2 mb-1">
-                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                    </div>
-                    <ul class="blog-meta">
-                        <li class="meta-item blog-lesson">
-                            <span class="meta-value"> April 13, 2020 </span>
-                        </li>
-                        <li class="meta-item blog-students">
-                            <span class="meta-value"> 6min read</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="grids5-info">
-                <h4>03.</h4>
-                <div class="blog-info">
-                    <a href="#blog-single" class="blog-desc1">
-                        How To Start A Blog From Scratch and with No Experience
-
-                    </a>
-                    <div class="author align-items-center mt-2 mb-1">
-                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                    </div>
-                    <ul class="blog-meta">
-                        <li class="meta-item blog-lesson">
-                            <span class="meta-value"> April 13, 2020 </span>
-                        </li>
-                        <li class="meta-item blog-students">
-                            <span class="meta-value"> 6min read</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="grids5-info">
-                <h4>04.</h4>
-                <div class="blog-info">
-                    <a href="#blog-single" class="blog-desc1">
-                        Within few minutes, you will have your blog up and running.
-                    </a>
-                    <div class="author align-items-center mt-3 mb-1">
-                        <a href="#author">Johnson smith</a> in <a href="#url">Design</a>
-                    </div>
-                    <ul class="blog-meta">
-                        <li class="meta-item blog-lesson">
-                            <span class="meta-value"> April 13, 2020 </span>
-                        </li>
-                        <li class="meta-item blog-students">
-                            <span class="meta-value"> 6min read</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            }
+            
         </div>
     </div>
 </div>
+<script>
+    var app = angular.module('myApp', ['ui.bootstrap']);
+    app.controller('myCtrl', function($scope, $http) {
+      $http({
+        method : "GET",
+          url: "/News/JsonNews"
+      }).then(function mySuccess(response) {
+
+          $scope.list = response.data;
+
+      }, function myError(response) {
+        $scope.list = response.statusText;
+      });
+    });
+</script>

@@ -1,99 +1,217 @@
-﻿@model vnnews.Models.News
+﻿@using vnnews.Models
+@model vnnews.Models.News
 
 @{
+    vnnewsEntities db = new vnnewsEntities();
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    HttpCookie cookie = Request.Cookies["user_cookie"];
 }
+@{
+    List<News> news = db.News.ToList();
+    List<Favourite> favourites = db.Favourites.ToList();
+}
+<style>
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 100%;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-8 most-recent">
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <div class="font-weight-bold">
+                    <span><i class="fa fa-eye">&nbsp;</i>@Model.news_view</span>
+                    <span><i class="fa fa-heart text-danger">&nbsp;</i>@Model.news_view</span>
+                    <span><i class="fa fa-thumbs-up text-primary">&nbsp;</i>@Model.news_view</span>
+                </div>
+                <h5>Đăng bởi <b>@Model.User.user_name</b> là một @Model.User.Role.role_name vào <b>@Model.news_datecreate</b></h5>
+                <h3 class="section-title-left">@Model.news_name</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <p>
+                        @Html.Raw(Model.news_content)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 trending mt-lg-0 mt-5 mb-lg-5">
+        <div class="pos-sticky" ng-app="myApp">
+            <div class="row" ng-controller="myCtrl">
+                @if (cookie != null)
+                {
+                    <div class="col-lg-4">
+                        <button ng-show="list.length == 0" ng-click="favourite(@int.Parse(cookie.Value.ToString()),@Model.news_id)" class="ui gray button w-100"><i class="fa fa-thumbs-up">&nbsp;</i>{{list.length}}</button>
+                        <span ng-show="list.length != 0">
+                            <span ng-repeat="list in list" ng-show="list.idnews == @Model.news_id & list.idus == @int.Parse(cookie.Value.ToString())">
+                                <button class="ui blue button w-100"><span><i ng-click="deletefavourite(list.id,@Model.news_id)" class="fa fa-thumbs-up">&nbsp;</i></span>{{list.length}}</button>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="ui red button w-100"><i class="fa fa-info">&nbsp;</i>Báo cáo</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="ui gray button w-100"><i class="fa fa-heart">&nbsp;</i>Lưu</button>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <button class="ui orange button w-100"><i class="fa fa-comment">&nbsp;</i>(0) Bình luận</button>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <button class="ui blue button w-100"><i class="fa fa-share">&nbsp;</i>Chia sẻ</button>
+                    </div>
+                    <script>
+                        var app = angular.module('myApp', []);
+                        app.controller('myCtrl', function($scope, $http) {
+                            $http({
+                            method : "GET",
+                                url: "/tools/JsonFavouriteD/" + @Model.news_id
+                            }).then(function mySuccess(response) {
 
-<h2>Details</h2>
 
-<div>
-    <h4>News</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.news_name)
-        </dt>
+                                $scope.list = response.data;
 
-        <dd>
-            @Html.DisplayFor(model => model.news_name)
-        </dd>
+                                $scope.favourite = function (idus,idnews) {
+                                    $http({
+                                        method: "GET",
+                                        url: "/Tools/Favourite?idnews=" + idnews + "&idus="+idus+""
+                                    }).then(function mySuccess(response) {
+                                        $scope.list = response.data;
+                                        $(document).ready(function () {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_content)
-        </dt>
+                                            toastr.options = {
+                                                "closeButton": true,
+                                                "debug": true,
+                                                "newestOnTop": false,
+                                                "progressBar": true,
+                                                "positionClass": "toast-top-right",
+                                                "preventDuplicates": false,
+                                                "showDuration": "300",
+                                                "hideDuration": "1000000",
+                                                "timeOut": "5000",
+                                                "extendedTimeOut": "1000",
+                                                "showEasing": "swing",
+                                                "hideEasing": "linear",
+                                                "showMethod": "fadeIn",
+                                                "hideMethod": "fadeOut"
+                                            }
+                                            toastr["success"]("Tìm kiếm việc làm nhanh tại QuickJob.com", "Xóa thành công");
 
-        <dd>
-            @Html.DisplayFor(model => model.news_content)
-        </dd>
+                                        });
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_datecreate)
-        </dt>
+                                    }, function myError(response) {
+                                        $scope.list = response.statusText;
+                                    });
+                                }
 
-        <dd>
-            @Html.DisplayFor(model => model.news_datecreate)
-        </dd>
+                                $scope.deletefavourite = function (id,idnews) {
+                                    $http({
+                                        method: "GET",
+                                        url: "/Tools/DeleteFavourite?id=" + id + "&idnews=" + idnews + ""
+                                    }).then(function mySuccess(response) {
+                                        $scope.list = response.data;
+                                        $(document).ready(function () {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_view)
-        </dt>
+                                            toastr.options = {
+                                                "closeButton": true,
+                                                "debug": true,
+                                                "newestOnTop": false,
+                                                "progressBar": true,
+                                                "positionClass": "toast-top-right",
+                                                "preventDuplicates": false,
+                                                "showDuration": "300",
+                                                "hideDuration": "1000000",
+                                                "timeOut": "5000",
+                                                "extendedTimeOut": "1000",
+                                                "showEasing": "swing",
+                                                "hideEasing": "linear",
+                                                "showMethod": "fadeIn",
+                                                "hideMethod": "fadeOut"
+                                            }
+                                            toastr["success"]("Tìm kiếm việc làm nhanh tại QuickJob.com", "Xóa thành công");
 
-        <dd>
-            @Html.DisplayFor(model => model.news_view)
-        </dd>
+                                        });
+                                    }, function myError(response) {
+                                        $scope.list = response.statusText;
+                                    });
+                                }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_like)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.news_like)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_img)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.news_img)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_video)
-        </dt>
+                            }, function myError(response) {
+                            $scope.list = response.statusText;
+                            });
+                        });
+                    </script>
+                }
+            </div>
+            @if (cookie != null)
+            {
+                <h3 class="section-title-left mt-5">Tin tức dành cho bạn</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.news_video)
-        </dd>
+                foreach (var item in news.Where(n => n.news_active == true && n.news_bin == false && n.User.user_active == true).OrderByDescending(n => n.news_view).Take(15))
+                {
+                    <div class="grids5-info">
+                        <h4><i class="fa fa-heart text-danger"></i></h4>
+                        <div class="blog-info">
+                            <a href="#blog-single" class="blog-desc1">
+                                @item.news_name
+                            </a>
+                            <div class="author align-items-center mt-2 mb-1">
+                                <a href="#author">@item.User.user_name</a> bởi một <a href="#url">@item.User.Role.role_name</a>
+                            </div>
+                            <ul class="blog-meta">
+                                <li class="meta-item blog-lesson">
+                                    <span class="meta-value">Đăng vào @item.news_datecreate.Value.ToString("dd/MM/yyyy") </span>
+                                </li>
+                                <li class="meta-item blog-students">
+                                    <span class="meta-value"> @item.news_view lượt xem</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h3 class="section-title-left mt-5">Tin hot</h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.news_active)
-        </dt>
+                foreach (var item in news.Where(n => n.news_active == true && n.news_bin == false && n.User.user_active == true).OrderByDescending(n => n.news_view).Take(15))
+                {
+                    <div class="grids5-info">
+                        <h4><i class="fa fa-heart text-danger"></i></h4>
+                        <div class="blog-info">
+                            <a href="#blog-single" class="blog-desc1">
+                                @item.news_name
+                            </a>
+                            <div class="author align-items-center mt-2 mb-1">
+                                <a href="#author">@item.User.user_name</a> bởi một <a href="#url">@item.User.Role.role_name</a>
+                            </div>
+                            <ul class="blog-meta">
+                                <li class="meta-item blog-lesson">
+                                    <span class="meta-value">Đăng vào @item.news_datecreate.Value.ToString("dd/MM/yyyy") </span>
+                                </li>
+                                <li class="meta-item blog-students">
+                                    <span class="meta-value"> @item.news_view lượt xem</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.news_active)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.news_bin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.news_bin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.user_email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.user_email)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.news_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@if (cookie != null)
+{
+    
+}

@@ -31,7 +31,6 @@ namespace vnnews.Models
         public virtual DbSet<Contactad> Contactads { get; set; }
         public virtual DbSet<Dow_id> Dow_id { get; set; }
         public virtual DbSet<Editor> Editors { get; set; }
-        public virtual DbSet<Favourite> Favourites { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<News_Category> News_Category { get; set; }
@@ -42,5 +41,6 @@ namespace vnnews.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User_Category> User_Category { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Favourite> Favourites { get; set; }
     }
 }

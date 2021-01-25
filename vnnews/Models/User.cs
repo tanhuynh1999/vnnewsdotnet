@@ -21,12 +21,12 @@ namespace vnnews.Models
             this.Comments = new HashSet<Comment>();
             this.Contactads = new HashSet<Contactad>();
             this.Editors = new HashSet<Editor>();
-            this.Favourites = new HashSet<Favourite>();
             this.Likes = new HashSet<Like>();
             this.News = new HashSet<News>();
             this.Replys = new HashSet<Reply>();
             this.Reports = new HashSet<Report>();
             this.User_Category = new HashSet<User_Category>();
+            this.Favourites = new HashSet<Favourite>();
         }
     
         public int user_id { get; set; }
@@ -51,8 +51,6 @@ namespace vnnews.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Editor> Editors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Favourite> Favourites { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Like> Likes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }
@@ -64,5 +62,7 @@ namespace vnnews.Models
         public virtual Sex Sex { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Category> User_Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Favourite> Favourites { get; set; }
     }
 }
